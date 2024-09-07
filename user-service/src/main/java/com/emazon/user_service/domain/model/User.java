@@ -13,9 +13,6 @@ public class User {
     private LocalDate birthdate;
     private Role role;
 
-    public User(){
-
-    }
     public User(Long id, String document, String name, String lastname, String email, String password, String cellphone, LocalDate birthdate, Role role) {
         this.id = id;
         this.document = document;

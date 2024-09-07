@@ -2,6 +2,7 @@ package com.emazon.user_service.infraestructure.output.jpa.adapter;
 
 import com.emazon.user_service.domain.model.User;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
+import com.emazon.user_service.infraestructure.output.jpa.entity.UserEntity;
 import com.emazon.user_service.infraestructure.output.jpa.mapper.IRoleEntityMapper;
 import com.emazon.user_service.infraestructure.output.jpa.mapper.IUserEntityMapper;
 import com.emazon.user_service.infraestructure.output.jpa.repository.IRoleRepository;
@@ -17,7 +18,7 @@ public class UserJpaAdapter implements IUserPersistencePort {
 
     @Override
     public void registerUser(User user) {
-
+        this.userRepository.save(userEntityMapper.toUserEntity(user));
     }
 
     @Override

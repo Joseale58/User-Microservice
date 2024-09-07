@@ -6,10 +6,7 @@ import com.emazon.user_service.application.handler.IUserHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/user")
@@ -17,6 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRestController {
 
     private final IUserHandler userHandler;
+
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello, World!";
+    }
+
 
     //To create a new user
     @PostMapping

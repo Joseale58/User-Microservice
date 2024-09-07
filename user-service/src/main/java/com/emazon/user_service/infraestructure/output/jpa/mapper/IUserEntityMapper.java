@@ -11,6 +11,6 @@ public interface IUserEntityMapper {
     @Mapping(source="role", target="role")
     UserEntity toUserEntity(User user);
 
-    @Mapping(source="role", target="role")
+    //@Mapping(source="role", target="role")
     User toUser(UserEntity userEntity);
 }

@@ -2,6 +2,7 @@ package com.emazon.user_service.infraestructure.configuration;
 
 import com.emazon.user_service.domain.api.IUserServicePort;
 import com.emazon.user_service.domain.spi.IRolePersitencePort;
+import com.emazon.user_service.domain.spi.ISecurityPersistencePort;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
 import com.emazon.user_service.domain.usecase.UserUseCase;
 import com.emazon.user_service.infraestructure.output.jpa.adapter.RoleJpaAdapter;
@@ -10,9 +11,12 @@ import com.emazon.user_service.infraestructure.output.jpa.mapper.IRoleEntityMapp
 import com.emazon.user_service.infraestructure.output.jpa.mapper.IUserEntityMapper;
 import com.emazon.user_service.infraestructure.output.jpa.repository.IRoleRepository;
 import com.emazon.user_service.infraestructure.output.jpa.repository.IUserRepository;
+import com.emazon.user_service.infraestructure.output.security.adapter.SecurityAdapter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Configuration
@@ -25,6 +29,11 @@ public class BeanConfiguration {
     private final IRoleEntityMapper roleEntityMapper;
 
     @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
     public IUserPersistencePort userPersistencePort() {
         return new UserJpaAdapter(userRepository, userEntityMapper);
     }
@@ -34,8 +43,14 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public IUserServicePort userServicePort() {
-        return new UserUseCase(userPersistencePort(), rolePersitencePort());
+    public ISecurityPersistencePort securityPersistencePort() {
+        return new SecurityAdapter(encoder());
     }
+
+    @Bean
+    public IUserServicePort userServicePort() {
+        return new UserUseCase(userPersistencePort(), rolePersitencePort(), securityPersistencePort());
+    }
+
 
 }

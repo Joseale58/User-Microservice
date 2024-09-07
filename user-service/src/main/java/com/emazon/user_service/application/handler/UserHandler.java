@@ -3,6 +3,8 @@ package com.emazon.user_service.application.handler;
 import com.emazon.user_service.application.dto.RegisterDtoRequest;
 import com.emazon.user_service.application.mapper.IUserRequestMapper;
 import com.emazon.user_service.domain.api.IUserServicePort;
+import com.emazon.user_service.domain.model.Role;
+import com.emazon.user_service.domain.model.User;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,11 @@ public class UserHandler implements  IUserHandler{
 
     @Override
     public void registerUser(RegisterDtoRequest registerDtoRequest) {
-       userServicePort.register(userRequestMapper.toUser(registerDtoRequest));
+        User user = userRequestMapper.toUser(registerDtoRequest);
+        Role role = new Role();
+        role.setId(registerDtoRequest.getRoleId());
+        user.setRole(role);
+        userServicePort.register(user);
     }
 
 

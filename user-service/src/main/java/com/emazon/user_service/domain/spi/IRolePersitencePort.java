@@ -6,4 +6,5 @@ import java.util.*;
 
 public interface IRolePersitencePort {
     Optional<Role> findByName(String name);
+    Optional<Role> findById(Long id);
 }

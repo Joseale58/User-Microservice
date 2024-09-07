@@ -43,7 +43,7 @@ public class UserEntity {
     @Column
     private LocalDate birthdate;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id")
     private RoleEntity role;
 
