@@ -41,8 +41,7 @@ public class SecurityConfig {
                     http.requestMatchers(HttpMethod.GET, "/user/**").permitAll();
                     // Permitir solicitudes POST a /user
                     http.requestMatchers(HttpMethod.POST, "/user").permitAll();
-                    //Configurar endpoints privados
-                    http.requestMatchers(HttpMethod.GET, "/auth/hello-secured").hasAuthority("CREATE");
+                    http.requestMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll();
                     //Configurar cualquier otro endpoint (Zero trust)
                     http.anyRequest().denyAll(); //Niega todos los otros request a endpoints no configurados
                     //http.anyRequest().authenticated(); // Niegas los otros request a endpoints solo si no estan autenticados

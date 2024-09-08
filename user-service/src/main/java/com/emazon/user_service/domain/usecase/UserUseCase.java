@@ -29,6 +29,9 @@ public class UserUseCase implements IUserServicePort {
         if(user.getDocument() == null || user.getDocument().isEmpty()) {
             throw new MissingValueException("documento");
         }
+        if (!user.getDocument().matches("\\d+")) {
+            throw new InvalidDocumentException("El documento debe ser numérico");
+        }
         if(user.getName() == null || user.getName().isEmpty()) {
             throw new MissingValueException("nombre");
         }
@@ -38,11 +41,17 @@ public class UserUseCase implements IUserServicePort {
         if (user.getEmail() == null || user.getEmail().isEmpty()) {
             throw new MissingValueException("email");
         }
+        if (!user.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+            throw new InvalidEmailException("El formato de email es inválido");
+        }
         if (user.getPassword() == null || user.getPassword().isEmpty()) {
             throw new MissingValueException("password");
         }
         if (user.getCellphone()== null || user.getCellphone().isEmpty()) {
             throw new MissingValueException("celular");
+        }
+        if (!user.getCellphone().matches("^\\+?\\d{1,12}$")) {
+            throw new InvalidPhoneException("El teléfono debe contener máximo 13 caracteres y puede contener el símbolo +");
         }
         if(user.getBirthdate() == null) {
             throw new MissingValueException("fecha de nacimiento");
@@ -52,15 +61,15 @@ public class UserUseCase implements IUserServicePort {
         }
 
         if(userPersistencePort.userExistByEmail(user.getEmail())){
-            throw new EmailAlreadyExistsException(user.getEmail());
+            throw new EmailAlreadyExistsException("Ya existe un usuario con este correo:" + user.getEmail());
         }
 
         if(userPersistencePort.userExistByDocument(user.getDocument())){
-            throw new DocumentAlreadyExistsException(user.getDocument());
+            throw new DocumentAlreadyExistsException("Ya existe un usuario con este documento:" +user.getDocument());
         }
 
         if(userPersistencePort.userExistByCellPhone(user.getCellphone())){
-            throw new CellPhoneAlreadyExistsException(user.getCellphone());
+            throw new CellPhoneAlreadyExistsException("Ya existe un usuario con este celular:" +user.getCellphone());
         }
 
         boolean isAdult = Period.between(user.getBirthdate(), java.time.LocalDate.now()).getYears() >= 18;

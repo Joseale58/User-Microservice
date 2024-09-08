@@ -9,6 +9,9 @@ import com.emazon.user_service.infraestructure.output.jpa.repository.IRoleReposi
 import com.emazon.user_service.infraestructure.output.jpa.repository.IUserRepository;
 import lombok.RequiredArgsConstructor;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
+
 @RequiredArgsConstructor
 
 public class UserJpaAdapter implements IUserPersistencePort {
@@ -23,16 +26,19 @@ public class UserJpaAdapter implements IUserPersistencePort {
 
     @Override
     public boolean userExistByEmail(String email) {
-        return false;
+        Optional<UserEntity> userEntity = userRepository.findByEmail(email);
+        return userEntity.isPresent();
     }
 
     @Override
     public boolean userExistByCellPhone(String cellPhone) {
-        return false;
+        Optional<UserEntity> userEntity = userRepository.findByCellphone(cellPhone);
+        return userEntity.isPresent();
     }
 
     @Override
     public boolean userExistByDocument(String document) {
-        return false;
+       Optional<UserEntity> userEntity = userRepository.findByDocument(document);
+         return userEntity.isPresent();
     }
 }

@@ -3,6 +3,8 @@ package com.emazon.user_service.infraestructure.input.rest;
 
 import com.emazon.user_service.application.dto.RegisterDtoRequest;
 import com.emazon.user_service.application.handler.IUserHandler;
+import com.emazon.user_service.domain.exception.EmailAlreadyExistsException;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +17,10 @@ public class UserRestController {
 
     private final IUserHandler userHandler;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return "Hello, World!";
-    }
 
 
     //To create a new user
+    @Operation(summary = "Register a new user", description = "Register a new user")
     @PostMapping
     public ResponseEntity<String> saveUser(@RequestBody RegisterDtoRequest registerDtoRequest) {
         userHandler.registerUser(registerDtoRequest);
