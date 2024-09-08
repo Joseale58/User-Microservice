@@ -3,13 +3,10 @@ package com.emazon.user_service.infraestructure.output.jpa.adapter;
 import com.emazon.user_service.domain.model.User;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
 import com.emazon.user_service.infraestructure.output.jpa.entity.UserEntity;
-import com.emazon.user_service.infraestructure.output.jpa.mapper.IRoleEntityMapper;
 import com.emazon.user_service.infraestructure.output.jpa.mapper.IUserEntityMapper;
-import com.emazon.user_service.infraestructure.output.jpa.repository.IRoleRepository;
 import com.emazon.user_service.infraestructure.output.jpa.repository.IUserRepository;
 import lombok.RequiredArgsConstructor;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @RequiredArgsConstructor

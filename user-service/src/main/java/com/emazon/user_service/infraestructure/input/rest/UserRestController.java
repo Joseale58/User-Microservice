@@ -3,7 +3,6 @@ package com.emazon.user_service.infraestructure.input.rest;
 
 import com.emazon.user_service.application.dto.RegisterDtoRequest;
 import com.emazon.user_service.application.handler.IUserHandler;
-import com.emazon.user_service.domain.exception.EmailAlreadyExistsException;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
