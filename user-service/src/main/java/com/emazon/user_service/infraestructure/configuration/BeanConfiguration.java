@@ -1,7 +1,7 @@
 package com.emazon.user_service.infraestructure.configuration;
 
 import com.emazon.user_service.domain.api.IUserServicePort;
-import com.emazon.user_service.domain.spi.IRolePersitencePort;
+import com.emazon.user_service.domain.spi.IRolePersistencePort;
 import com.emazon.user_service.domain.spi.ISecurityPersistencePort;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
 import com.emazon.user_service.domain.usecase.UserUseCase;
@@ -38,7 +38,7 @@ public class BeanConfiguration {
         return new UserJpaAdapter(userRepository, userEntityMapper);
     }
     @Bean
-    public IRolePersitencePort rolePersitencePort() {
+    public IRolePersistencePort rolePersitencePort() {
         return new RoleJpaAdapter(roleRepository, roleEntityMapper);
     }
 

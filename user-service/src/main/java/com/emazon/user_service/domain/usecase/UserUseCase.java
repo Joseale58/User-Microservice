@@ -1,11 +1,10 @@
 package com.emazon.user_service.domain.usecase;
 
-import ch.qos.logback.classic.encoder.JsonEncoder;
 import com.emazon.user_service.domain.api.IUserServicePort;
 import com.emazon.user_service.domain.exception.*;
 import com.emazon.user_service.domain.model.Role;
 import com.emazon.user_service.domain.model.User;
-import com.emazon.user_service.domain.spi.IRolePersitencePort;
+import com.emazon.user_service.domain.spi.IRolePersistencePort;
 import com.emazon.user_service.domain.spi.ISecurityPersistencePort;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
 
@@ -15,10 +14,10 @@ public class UserUseCase implements IUserServicePort {
 
 
     private final IUserPersistencePort userPersistencePort;
-    private final IRolePersitencePort rolePersitencePort;
+    private final IRolePersistencePort rolePersitencePort;
     private final ISecurityPersistencePort securityPersistencePort;
 
-    public UserUseCase(IUserPersistencePort userPersistencePort, IRolePersitencePort rolePersitencePort, ISecurityPersistencePort securityPersistencePort) {
+    public UserUseCase(IUserPersistencePort userPersistencePort, IRolePersistencePort rolePersitencePort, ISecurityPersistencePort securityPersistencePort) {
         this.userPersistencePort = userPersistencePort;
         this.rolePersitencePort = rolePersitencePort;
         this.securityPersistencePort = securityPersistencePort;
