@@ -22,6 +22,12 @@ public class UserJpaAdapter implements IUserPersistencePort {
     }
 
     @Override
+    public User getUserByEmail(String email) {
+        Optional<UserEntity> userEntity = userRepository.findByEmail(email);
+        return userEntity.map(userEntityMapper::toUser).orElse(null);
+    }
+
+    @Override
     public boolean userExistByEmail(String email) {
         Optional<UserEntity> userEntity = userRepository.findByEmail(email);
         return userEntity.isPresent();
