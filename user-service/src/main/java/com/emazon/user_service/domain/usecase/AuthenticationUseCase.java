@@ -5,7 +5,6 @@ import com.emazon.user_service.domain.exception.MissingValueException;
 import com.emazon.user_service.domain.exception.UserDoesNotExistsException;
 import com.emazon.user_service.domain.model.Login;
 import com.emazon.user_service.domain.model.User;
-import com.emazon.user_service.domain.spi.IAuthenticationPersistencePort;
 import com.emazon.user_service.domain.spi.ISecurityPersistencePort;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
 

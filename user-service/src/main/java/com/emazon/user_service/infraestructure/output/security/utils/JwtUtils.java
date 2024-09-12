@@ -7,7 +7,6 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.emazon.user_service.infraestructure.output.security.entity.SecurityUserEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
@@ -50,8 +49,7 @@ public class JwtUtils {
         try{
             Algorithm algorithm = Algorithm.HMAC256(this.privateKey);
             JWTVerifier verifier = JWT.require(algorithm).build();
-            DecodedJWT decodedJWT = verifier.verify(token); //Si el token es invalido, se lanza una excepción
-            return decodedJWT;
+            return verifier.verify(token); //Si el token es invalido, se lanza una excepción
         } catch (JWTVerificationException exception) {
             throw new JWTVerificationException("Token invalido, no autorizado");
         }

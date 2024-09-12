@@ -2,7 +2,6 @@ package com.emazon.user_service.infraestructure.configuration;
 
 import com.emazon.user_service.domain.api.IAuthenticationServicePort;
 import com.emazon.user_service.domain.api.IUserServicePort;
-import com.emazon.user_service.domain.spi.IAuthenticationPersistencePort;
 import com.emazon.user_service.domain.spi.IRolePersistencePort;
 import com.emazon.user_service.domain.spi.ISecurityPersistencePort;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
