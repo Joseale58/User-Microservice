@@ -6,15 +6,16 @@ import com.emazon.user_service.domain.exception.UserDoesNotExistsException;
 import com.emazon.user_service.domain.model.Login;
 import com.emazon.user_service.domain.model.User;
 import com.emazon.user_service.domain.spi.IAuthenticationPersistencePort;
+import com.emazon.user_service.domain.spi.ISecurityPersistencePort;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
 
 public class AuthenticationUseCase implements IAuthenticationServicePort {
 
-    private final IAuthenticationPersistencePort authenticationPersistencePort;
+    private final ISecurityPersistencePort securityPersistencePort;
     private final IUserPersistencePort userPersistencePort;
 
-    public AuthenticationUseCase(IAuthenticationPersistencePort authenticationPersistencePort, IUserPersistencePort userPersistencePort) {
-        this.authenticationPersistencePort = authenticationPersistencePort;
+    public AuthenticationUseCase(ISecurityPersistencePort securityPersistencePort, IUserPersistencePort userPersistencePort) {
+        this.securityPersistencePort = securityPersistencePort;
         this.userPersistencePort = userPersistencePort;
     }
 
@@ -34,7 +35,7 @@ public class AuthenticationUseCase implements IAuthenticationServicePort {
             throw new UserDoesNotExistsException("El usuario con correo: " + login.getEmail() + " no existe");
         }
 
-        return authenticationPersistencePort.authenticate(login);
+        return securityPersistencePort.authenticate(login);
 
 
     }
