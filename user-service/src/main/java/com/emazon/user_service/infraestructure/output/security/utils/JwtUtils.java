@@ -36,8 +36,8 @@ public class JwtUtils {
                 //Los claims son los datos del payload del token
                 .withSubject(username) //Añade el nombre de usuario
                 .withClaim("role", role) //Añade el rol del usuario
-                .withIssuedAt(new Date(System.currentTimeMillis())) //Añade la fecha de creación del token
-                .withExpiresAt(new Date(System.currentTimeMillis() + 1800000)) //Añade la fecha de expiración del token
+//                .withIssuedAt(new Date(System.currentTimeMillis())) //Añade la fecha de creación del token
+//                .withExpiresAt(new Date(System.currentTimeMillis() + 1800000)) //Añade la fecha de expiración del token
                 .withJWTId(UUID.randomUUID().toString()) //Añade un identificador único y random al token
                 .sign(algorithm);
 
