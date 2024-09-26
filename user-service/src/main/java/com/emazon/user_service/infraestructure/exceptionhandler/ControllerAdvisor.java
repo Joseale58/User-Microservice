@@ -1,6 +1,7 @@
 package com.emazon.user_service.infraestructure.exceptionhandler;
 
 import com.emazon.user_service.domain.exception.*;
+import com.emazon.user_service.utils.Constants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -11,7 +12,7 @@ import java.util.Map;
 @ControllerAdvice
 public class ControllerAdvisor {
 
-    private static final String MESSAGE = "Mensaje:";
+    private static final String MESSAGE = Constants.EXCEPTION_MESSAGE;
 
     @ExceptionHandler(CellPhoneAlreadyExistsException.class)
     public ResponseEntity<Map<String, String>> handleCellPhoneAlreadyExistsException(

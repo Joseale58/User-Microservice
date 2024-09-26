@@ -5,6 +5,8 @@ import com.emazon.user_service.domain.model.User;
 import com.emazon.user_service.domain.spi.ISecurityPersistencePort;
 import com.emazon.user_service.domain.spi.IUserPersistencePort;
 import com.emazon.user_service.infraestructure.output.security.utils.JwtUtils;
+import com.emazon.user_service.utils.Constants;
+import com.emazon.user_service.utils.SecurityConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -34,7 +36,7 @@ public class SecurityAdapter implements ISecurityPersistencePort {
     public String authenticate(Login login) {
         User userDetails = userPersistencePort.getUserByEmail(login.getEmail());
         if(!passwordEncoder.matches(login.getPassword(),userDetails.getPassword())){
-            throw new BadCredentialsException("Credenciales incorrectas");
+            throw new BadCredentialsException(SecurityConstants.WRONG_CREDENTIALS_EXCEPTION);
         }
         List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(userDetails.getRole().getName()));
         Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails.getEmail(),userDetails.getPassword(),authorities);

@@ -16,9 +16,6 @@ public class UserRestController {
 
     private final IUserHandler userHandler;
 
-
-
-    //To create a new user
     @Operation(summary = "Register a new user", description = "Register a new user")
     @PostMapping
     public ResponseEntity<String> saveUser(@RequestBody RegisterDtoRequest registerDtoRequest) {
