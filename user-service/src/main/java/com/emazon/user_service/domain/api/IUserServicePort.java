@@ -4,7 +4,8 @@ import com.emazon.user_service.domain.model.User;
 
 public interface IUserServicePort {
 
-    void register(User user);
+    void registerWarehoseAux(User user);
+    void registerClient(User user);
 
 
 }

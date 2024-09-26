@@ -18,5 +18,4 @@ public class RegisterDtoRequest {
     private String password;
     private String cellphone;
     private LocalDate birthdate;
-    private Long roleId;
 }
