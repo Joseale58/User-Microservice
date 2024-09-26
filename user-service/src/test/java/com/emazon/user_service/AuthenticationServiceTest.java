@@ -10,6 +10,7 @@ import com.emazon.user_service.domain.spi.IUserPersistencePort;
 import com.emazon.user_service.domain.usecase.AuthenticationUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 
 import java.time.LocalDate;
@@ -18,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
-
 public class AuthenticationServiceTest {
 
     private ISecurityPersistencePort securityPersistencePort;
