@@ -34,9 +34,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(http  ->{
                     http.requestMatchers("/auth/**").permitAll();
                     http.requestMatchers("/swagger-ui/**","/v3/api-docs/**").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/auth/**").permitAll();
-                    http.requestMatchers(HttpMethod.POST, "/user/**").hasAuthority(SecurityConstants.CLAIM_ROLE_ADMIN);
-                    http.anyRequest().denyAll(); //Niega todos los otros request a endpoints no configurados
+                    http.requestMatchers(HttpMethod.POST, "/user/warehouse_aux").hasAuthority(SecurityConstants.CLAIM_ROLE_ADMIN);
+                    http.anyRequest().permitAll(); //Permite todos los otros request a endpoints no configurados
                     //http.anyRequest().authenticated(); // Niegas los otros request a endpoints solo si no estan autenticados
                 })
                 .addFilterBefore(new JwtTokenValidatorFilter(jwtUtils), BasicAuthenticationFilter.class)

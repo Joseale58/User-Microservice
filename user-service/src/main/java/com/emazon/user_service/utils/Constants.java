@@ -35,7 +35,12 @@ public class Constants {
 
     public static final String ROLE_DOES_NOT_EXISTS_EXCEPTION = "El rol no existe";
 
+    //REST Controller
+    public static final String SAVE_USER_SUCCESS = "Se creó exitosamente el usuario";
 
+    //Roles
+    public static final long ROLE_WAREHOUSE_AUX = 1;
+    public static final long ROLE_CLIENT = 3;
 
 
 

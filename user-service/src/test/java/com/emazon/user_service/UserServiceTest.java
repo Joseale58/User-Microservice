@@ -49,31 +49,31 @@ public class UserServiceTest {
     @Test
     void testRegister_NullDocument_ThrowsMissingValueException() {
         user.setDocument(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_EmptyDocument_ThrowsMissingValueException() {
         user.setDocument("");
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
     @Test
     void testRegister_InvalidDocument_ThrowsInvalidDocumentException() {
         user.setDocument("abc123");
-        Exception exception = assertThrows(InvalidDocumentException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(InvalidDocumentException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_NullName_ThrowsMissingValueException() {
         user.setName(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
 
     }
@@ -81,143 +81,143 @@ public class UserServiceTest {
     @Test
     void testRegister_EmptyName_ThrowsMissingValueException() {
         user.setName("");
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_NullLastname_ThrowsMissingValueException() {
         user.setLastname(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_EmptyLastname_ThrowsMissingValueException() {
         user.setLastname("");
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_NullEmail_ThrowsMissingValueException() {
         user.setEmail(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_EmptyEmail_ThrowsMissingValueException() {
         user.setEmail("");
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_InvalidEmail_ThrowsInvalidEmailException() {
         user.setEmail("correo-invalido");
-        Exception exception = assertThrows(InvalidEmailException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(InvalidEmailException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_NullPassword_ThrowsMissingValueException() {
         user.setPassword(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_EmptyPassword_ThrowsMissingValueException() {
         user.setPassword("");
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_NullCellphone_ThrowsMissingValueException() {
         user.setCellphone(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_EmptyCellphone_ThrowsMissingValueException() {
         user.setCellphone("");
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_InvalidPhone_ThrowsInvalidPhoneException() {
         user.setCellphone("123456789012345");
-        Exception exception = assertThrows(InvalidPhoneException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(InvalidPhoneException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_NullBirthdate_ThrowsMissingValueException() {
         user.setBirthdate(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_MinorUser_ThrowsMinorException() {
         user.setBirthdate(LocalDate.now().minusYears(17));
-        Exception exception = assertThrows(MinorException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MinorException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_NullRole_ThrowsMissingValueException() {
         user.setRole(null);
-        Exception exception = assertThrows(MissingValueException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(MissingValueException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_RoleNotFound_ThrowsRoleNotFoundException() {
         when(rolePersistencePort.findById(anyLong())).thenReturn(Optional.empty());
-        Exception exception = assertThrows(RoleNotFoundException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(RoleNotFoundException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_EmailAlreadyExists_ThrowsEmailAlreadyExistsException() {
         when(userPersistencePort.userExistByEmail(anyString())).thenReturn(true);
-        Exception exception = assertThrows(EmailAlreadyExistsException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(EmailAlreadyExistsException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });}
 
     @Test
     void testRegister_DocumentAlreadyExists_ThrowsDocumentAlreadyExistsException() {
         when(userPersistencePort.userExistByDocument(anyString())).thenReturn(true);
-        Exception exception = assertThrows(DocumentAlreadyExistsException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(DocumentAlreadyExistsException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
     @Test
     void testRegister_CellphoneAlreadyExists_ThrowsCellPhoneAlreadyExistsException() {
         when(userPersistencePort.userExistByCellPhone(anyString())).thenReturn(true);
-        Exception exception = assertThrows(CellPhoneAlreadyExistsException.class, () -> {
-            userServicePort.register(user);
+        assertThrows(CellPhoneAlreadyExistsException.class, () -> {
+            userServicePort.registerWarehoseAux(user);
         });
     }
 
@@ -228,7 +228,7 @@ public class UserServiceTest {
         when(userPersistencePort.userExistByEmail(anyString())).thenReturn(false);
         when(userPersistencePort.userExistByDocument(anyString())).thenReturn(false);
         when(userPersistencePort.userExistByCellPhone(anyString())).thenReturn(false);
-        userServicePort.register(user);
+        userServicePort.registerWarehoseAux(user);
         verify(userPersistencePort, times(1)).registerUser(user);
     }
 

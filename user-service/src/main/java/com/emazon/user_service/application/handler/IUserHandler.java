@@ -4,5 +4,7 @@ import com.emazon.user_service.application.dto.RegisterDtoRequest;
 
 public interface IUserHandler {
 
-    void registerUser(RegisterDtoRequest registerDtoRequest);
+    void registerWarehouseAux(RegisterDtoRequest registerDtoRequest);
+
+    void registerClient(RegisterDtoRequest registerDtoRequest);
 }
